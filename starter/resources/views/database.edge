@@ -32,8 +32,8 @@ Comment API
   </form>
   <h1>Comments in Database</h1>
   <ul class='list-group'>
-    @each(com in comments)
-      <li class='list-group-item'>{{ com.user_id }}: {{ com.comment }}</li>
+    @each(com in posts)
+      <li class='list-group-item'>User ID: {{ com.User_ID }} <tab> Comment: {{ com.Comment }}</li>
     @endeach
   </ul>
 

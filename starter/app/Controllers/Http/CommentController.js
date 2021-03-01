@@ -15,20 +15,22 @@ class CommentController {
   }
   async store({ request, response, session }) {
     // Validate input
-    const validation = await validate(request.all(), {
-      title: 'required|min:3|max:255',
-      body: 'required|min:3'
-    })
-
-    if(validation.fails()){
-      session.withErrors(validation.messages()).flashAll()
-      return response.redirect('back')
-    }
+    // const validation = await validate(request.all(), {
+    //   title: 'required|min:3|max:255',
+    //   body: 'required|min:3'
+    // })
+    //
+    // if(validation.fails()){
+    //   session.withErrors(validation.messages()).flashAll()
+    //   return response.redirect('back')
+    // }
 
     const post = new Post()
 
-    post.title = request.input('title')
-    post.body = request.input('body')
+    post.User_ID = request.input('User_ID')
+    post.Post_ID = request.input('Post_ID')
+    post.Username = request.input('Username')
+    post.Comment = request.input('Comment')
 
     await post.save()
 
