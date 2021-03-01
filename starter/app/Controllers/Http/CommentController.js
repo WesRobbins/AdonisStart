@@ -8,7 +8,7 @@ class CommentController {
     const comments = await Post.all();
 
 
-    return view.render(('database'), {
+    return view.render(('/database'), {
      title: 'Latest Comments from controller',
      posts: comments.toJSON()
    })
