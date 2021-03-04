@@ -9,9 +9,30 @@ Comment API
 
   <h2>SpecialProject.io Commenting API (v1.0 beta) </h2>
   <body>
-    <p> The commenting API will use SpecialProject's UUIDs' (universally unique identifier)
-      to identify the users and their required information. 
-    </p> 
+    <p> The goal of the API is a commenting interface for SpecialProjects's site where their
+      users can comment, reply, like, etc. content on there site. The commenting API will use 
+      SpecialProject's UUIDs' (universally unique identifier) to identify the users and their
+      required information. The API should work similarly to the reddit commenting interface 
+      with nested comment replys. 
+    </p>
+
+    <p>
+      The data such as the comments and the users linked to them will be stored on a live database 
+      provided by MSU. MSU will also host the live API URL. 
+
+      Main page URL: http://esof423.cs.montana.edu:4013
+    <p> 
+      Postman will be used as the API devlepement tool for reqeusts
+      to and and from the API to the SpecialProject site. 
+
+      SpecialProject will use the provdided URL's to call different functions
+
+      http://esof423.cs.montana.edu:4013/add
+      http://esof423.cs.montana.edu:4013/upvote
+      http://esof423.cs.montana.edu:4013/downvote
+      http://esof423.cs.montana.edu:4013/delete
+
+    </p>
     <p> Functions included:</p>
     <ul> 
       <li>Add Comment</li>
