@@ -7,4 +7,64 @@ Comment API
 @section('content')
   <h1>Developer Documentation</h1>
 
+  <h2> SpecialProject.io Commenting API (v1.0 beta) </h2>
+
+  <body>
+    <p> The commenting function is modelled after the Reddit commenting Functions
+     allowing for infinite nesting of comments built with the Adonis framework. Below is a
+     list of the files developed/edited specificially for this project and what make it unique.
+     Remaining files can be assumed to be unedited, and apart of the Adonis framework. 
+     </p>
+
+     <br>
+
+     <p> Files and their functions: </p>
+
+     <br>
+
+     <ul>
+       <li> ../app/Controllers/CommentController.js:
+              The comment controller file contains all of the
+              the implementation of the functions required within the API</li>
+              <br>
+       <li> ../database/1613762106104_posts_schema.js:
+               Contains the structure of the DB with each of the
+               required fields for the user to successfully posts
+               a comment. In order to update the DB, developers need
+               to run the command, adonis migration:run, in order to add or
+               or remove a field. </li>
+               <br>
+
+       <li> ../resources/views/layouts/add.edge:
+              Contains the form for user input when posting a new comment. </li>
+              <br>
+
+       <li> ../layouts/edit.edge:
+              Clone of the add file in order to allow users to update/edit
+              their comments. </li>
+              <br>
+
+        <li> ../layouts/main.edge:
+              Navigation for site </li>
+              <br>
+
+        <li> ../views/database.edge:
+              Forms for user input in order to gather necessary information
+              to make a post. </li>
+              <br>
+
+        <li> ../views/dev.edge:
+              Developer documentation page. </li>
+              <br>
+
+        <li> ../views/user.edge:
+              User documentation page. </li>
+              <br>
+
+        <li> ../views/welcome.edge:
+               Landing page. </li>
+               <br>
+
+        <li> Github link: https://github.com/WesRobbins/AdonisStart </li>
+  </body>
 @endsection
