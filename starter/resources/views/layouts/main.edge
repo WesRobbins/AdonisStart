@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  {{ style('style') }}
+
+  @!section('extracss')
+  <title>
+    @!section('title')
+  </title>
+</head>
+<body>
+  <header>
+    <a href="/" id-"logo">Comment API</a>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+          <li><a href="/user-docs">User Docs</a></li>
+          <li><a href="/dev-docs">Dev Docs</a></li>
+          <li><a href="/database">Data</a></li>
+
+  </header>
+  <div class="containter">
+    @!section("content")
+  </div>
+</body>
+</html>
