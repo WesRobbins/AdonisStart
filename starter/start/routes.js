@@ -20,5 +20,9 @@ Route.on('/').render('welcome')
 Route.on('/user-docs').render('user')
 Route.on('/dev-docs').render('dev')
 Route.get('/database', 'CommentController.index')
+
+Route.get('/layouts/edit/:id', 'CommentController.edit')
+
 Route.post('/add', 'CommentController.store')
+
 // Route.on('/database').render('database')
