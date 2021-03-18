@@ -1,27 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  {{ style('style') }}
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SpecailProject.io Comment API</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-  @!section('extracss')
-  <title>
-    @!section('title')
-  </title>
-</head>
-<body>
-  <header>
-    <a href="/" id-"logo">Comment API</a>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-          <li><a href="/user-docs">User Docs</a></li>
-          <li><a href="/dev-docs">Dev Docs</a></li>
-          <li><a href="/database">Data</a></li>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-  </header>
-  <div class="containter">
-    @!section("content")
-  </div>
-</body>
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<h1>Comment API</h1>
+						<p>Johnny Eagan, Wes Robbins, and Spencer Reap<br /></p>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#intro" class="active">Home</a></li>
+							<li><a href="#first">User Documentation</a></li>
+							<li><a href="#second">Developer Documentation</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+						<section id="intro" class="main">
+							<div class="spotlight">
+								<div class="content">
+									<header class="major">
+										<h2>Comment API</h2>
+									</header>
+									<p>
+										Summary of API
+									</p>
+								</div>
+							</div>
+						</section>
+
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2>User Documentation</h2>
+								</header>
+								<body>
+									<br>
+									<p> <b>Summary:</b>The goal of the API is a commenting interface for SpecialProjects's site where their
+									  users can comment, reply, like, etc. content on there site. The commenting API will use 
+									  SpecialProject's UUIDs' (universally unique identifier) to identify the users and their
+									  required information. The API should work similarly to the reddit commenting interface 
+									  with nested comment replys.
+									</p>
+									<br>
+									<p>
+									  The data such as the comments and the users linked to them will be stored on a live database 
+									  provided by MSU. MSU will also host the live API URL. 
+									  <br>
+									  <br>
+									  <b>Main page URL:</b> http://esof423.cs.montana.edu:4013
+									<p> 
+									  <br>
+									  Postman will be used as the API devlepement tool for reqeusts
+									  to and and from the API to the SpecialProject site.
+									  <br> 
+									  <br>
+								
+									  <b>SpecialProject will use the provdided URL's to call different functions:</b>
+									  <br>
+									  <ul>
+										<li><b>Add Comment:</b> http://esof423.cs.montana.edu:4013/add</li>
+										<li><b>Upvote:</b> http://esof423.cs.montana.edu:4013/upvote</li>
+										<li><b>Downvote:</b> http://esof423.cs.montana.edu:4013/downvote</li>
+										<li><b>Delete Comment:</b> http://esof423.cs.montana.edu:4013/delete</li>
+									  </ul>
+								
+									</p>
+								  </body>
+							</section>
+
+						<!-- Second Section -->
+							<section id="second" class="main special">
+								<header class="major">
+									<h2>Developer Documentation</h2>
+									<p>The commenting function is modelled after the Reddit commenting Functions
+										allowing for infinite nesting of comments built with the Adonis framework. Below is a
+										list of the files developed/edited specificially for this project and what make it unique.
+										Remaining files can be assumed to be unedited, and apart of the Adonis framework.</p>
+										<p> Files and their functions: </p>
+
+											<br>
+
+											<ul>
+											<li> ../app/Controllers/CommentController.js:
+													The comment controller file contains all of the
+													the implementation of the functions required within the API</li>
+													<br>
+											<li> ../database/1613762106104_posts_schema.js:
+													Contains the structure of the DB with each of the
+													required fields for the user to successfully posts
+													a comment. In order to update the DB, developers need
+													to run the command, adonis migration:run, in order to add or
+													or remove a field. </li>
+													<br>
+
+											<li> ../resources/views/layouts/add.edge:
+													Contains the form for user input when posting a new comment. </li>
+													<br>
+
+											<li> ../layouts/edit.edge:
+													Clone of the add file in order to allow users to update/edit
+													their comments. </li>
+													<br>
+
+												<li> ../layouts/main.edge:
+													Navigation for site </li>
+													<br>
+
+												<li> ../views/database.edge:
+													Forms for user input in order to gather necessary information
+													to make a post. </li>
+													<br>
+
+												<li> ../views/dev.edge:
+													Developer documentation page. </li>
+													<br>
+
+												<li> ../views/user.edge:
+													User documentation page. </li>
+													<br>
+
+												<li> ../views/welcome.edge:
+													Landing page. </li>
+													<br>
+
+												<li> Github link: https://github.com/WesRobbins/AdonisStart </li>
+																		</header>
+					
+								
+								
+							</section>
+
+						<!-- Get Started -->
+							<section id="cta" class="main special">
+								<header class="major">
+									<h2>Comment API Database</h2>
+									
+								</header>
+
+									<h2>Add Comment</h2>
+									<form action="/add" method="POST">
+										{{ csrfField() }}
+										<div class="form-group">
+										<label>User ID</label>
+										<input type="text" name="User_ID" class="form-control" placeholder="User ID" value="{{ old('title', '') }}">
+										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+										</div>
+										<div class="form-group">
+										<label>Post ID</label>
+										<input type="text" name="Post_ID" class="form-control" placeholder="Post ID" value="{{ old('title', '') }}">
+										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+										</div>
+										<div class="form-group">
+										<label>User Name</label>
+										<input type="text" name="Username" class="form-control" placeholder="Username" value="{{ old('title', '') }}">
+										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+										</div>
+										<div class="form-group">
+										<label>Comment Body</label>
+										<textarea name="Comment" class="form-control" placeholder="Comment">{{ old('body', '') }}</textarea>
+										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
+										</div>
+										<button class="btn btn-primary" type="submit">Submit</button>
+									</form>
+									<h1>Comments in Database</h1>
+									<ul class='list-group'>
+										@each(com in posts)
+										<li class='list-group-item'>User ID: {{ com.User_ID }} <tab> Comment: {{ com.Comment }}</li>
+										@endeach
+									</ul>
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
 </html>
