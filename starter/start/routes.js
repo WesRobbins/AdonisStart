@@ -16,7 +16,7 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('layouts/main1')
+Route.on('/').render('layouts/main')
 Route.on('/user-docs').render('user')
 Route.on('/dev-docs').render('dev')
 Route.get('/database', 'CommentController.index')

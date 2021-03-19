@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<span class="logo"><img src="images/logo.svg" alt="" /></span>
+						<span class="logo"><img src="logo.svg" alt="" /></span>
 						<h1>Comment API</h1>
 						<p>Johnny Eagan, Wes Robbins, and Spencer Reap<br /></p>
 					</header>
@@ -59,25 +59,25 @@
 								<body>
 									<br>
 									<p> <b>Summary:</b>The goal of the API is a commenting interface for SpecialProjects's site where their
-									  users can comment, reply, like, etc. content on there site. The commenting API will use 
+									  users can comment, reply, like, etc. content on there site. The commenting API will use
 									  SpecialProject's UUIDs' (universally unique identifier) to identify the users and their
-									  required information. The API should work similarly to the reddit commenting interface 
+									  required information. The API should work similarly to the reddit commenting interface
 									  with nested comment replys.
 									</p>
 									<br>
 									<p>
-									  The data such as the comments and the users linked to them will be stored on a live database 
-									  provided by MSU. MSU will also host the live API URL. 
+									  The data such as the comments and the users linked to them will be stored on a live database
+									  provided by MSU. MSU will also host the live API URL.
 									  <br>
 									  <br>
 									  <b>Main page URL:</b> http://esof423.cs.montana.edu:4013
-									<p> 
+									<p>
 									  <br>
 									  Postman will be used as the API devlepement tool for reqeusts
 									  to and and from the API to the SpecialProject site.
-									  <br> 
 									  <br>
-								
+									  <br>
+
 									  <b>SpecialProject will use the provdided URL's to call different functions:</b>
 									  <br>
 									  <ul>
@@ -86,7 +86,7 @@
 										<li><b>Downvote:</b> http://esof423.cs.montana.edu:4013/downvote</li>
 										<li><b>Delete Comment:</b> http://esof423.cs.montana.edu:4013/delete</li>
 									  </ul>
-								
+
 									</p>
 								  </body>
 							</section>
@@ -148,16 +148,16 @@
 
 												<li> Github link: https://github.com/WesRobbins/AdonisStart </li>
 																		</header>
-					
-								
-								
+
+
+
 							</section>
 
 						<!-- Get Started -->
 							<section id="cta" class="main special">
 								<header class="major">
 									<h2>Comment API Database</h2>
-									
+
 								</header>
 
 									<h2>Add Comment</h2>
@@ -188,7 +188,14 @@
 									<h1>Comments in Database</h1>
 									<ul class='list-group'>
 										@each(com in posts)
-										<li class='list-group-item'>User ID: {{ com.User_ID }} <tab> Comment: {{ com.Comment }}</li>
+											<li class='list-group-item'>User ID: {{ com.User_ID }} <tab> Comment: {{ com.Comment }}
+
+											<button class="btn btn-primary" type="submit">Delete</button>
+												<form action="{{'/edit/ ' + pos.id + '?_method=PUT' }}" method="GET">
+											<button class="btn btn-primary" type="submit">Edit</button>
+												<form action="{{'/edit/'}" method="POST">
+
+											</li>
 										@endeach
 									</ul>
 
