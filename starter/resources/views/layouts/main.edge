@@ -21,7 +21,7 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="logo.svg" alt="" /></span>
 						<h1>Comment API</h1>
-						<p>Johnny Eagan, Wes Robbins, and Spencer Reap<br /></p>
+						<p>Johnny Egan, Wes Robbins, and Spencer Reap<br /></p>
 					</header>
 
 				<!-- Nav -->
@@ -30,6 +30,7 @@
 							<li><a href="#intro" class="active">Home</a></li>
 							<li><a href="#first">User Documentation</a></li>
 							<li><a href="#second">Developer Documentation</a></li>
+							<li><a href="#third">Comment API</a></li>
 						</ul>
 					</nav>
 
@@ -154,7 +155,7 @@
 							</section>
 
 						<!-- Get Started -->
-							<section id="cta" class="main special">
+							<section id="third" class="main special">
 								<header class="major">
 									<h2>Comment API Database</h2>
 
@@ -192,8 +193,8 @@
 
 											<button class="btn btn-primary" type="submit">Delete</button>
 												<form action="{{'/edit/ ' + pos.id + '?_method=PUT' }}" method="GET">
-											<button class="btn btn-primary" type="submit">Edit</button>
-												<form action="{{'/edit/'}" method="POST">
+											<button class="btn btn-primary" type="button">Edit</button>
+												<form action="{{'/edit/'}" method="GET">
 
 											</li>
 										@endeach
