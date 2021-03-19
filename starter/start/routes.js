@@ -17,10 +17,16 @@
 const Route = use('Route')
 
 Route.on('/').render('layouts/main1')
+
 Route.on('/user-docs').render('user')
+
 Route.on('/dev-docs').render('dev')
+
 Route.get('/database', 'CommentController.index')
+
 Route.post('/add', 'CommentController.store')
+
+Route.put('/posts/:id', 'CommentController.update')
 
 Route.delete('/posts/:id', 'CommentController.destroy')
 
