@@ -7,12 +7,13 @@ class PostsSchema extends Schema {
   up () {
     this.create('posts', (table) => {
       table.increments()
-      table.string("Username")
+      // table.string("Username")
       table.string("Comment")
-      table.integer("User_ID")
-      table.integer("Post_ID")
+      table.string("User_ID")
+      table.string("Post_ID")
+      table.integer("upvotes")
+      table.integer("downvotes")
       table.timestamps()
-
     })
   }
 

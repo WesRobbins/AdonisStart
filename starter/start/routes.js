@@ -16,10 +16,14 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('layouts/main')
+// Route.on('/').render('layouts/main')
 Route.on('/user-docs').render('user')
 Route.on('/dev-docs').render('dev')
-Route.get('/database', 'CommentController.index')
+Route.get('/comms', 'CommentController.index')
+Route.get('/', 'CommentController.index2')
+Route.get('/delete/:id', 'CommentController.destroy');
+Route.get('/upvote/:id', 'CommentController.upvote');
+Route.get('/downvote/:id', 'CommentController.downvote');
 Route.post('/add', 'CommentController.store')
 // Route.on('/database').render('database')
 Route.on('/edit').render('layouts/edit')

@@ -97,6 +97,7 @@ class PostController {
   }
 
   async destroy({params, sessions, response}){
+    <script>alert('in destroy')</script>
     const post = await Post.find(params.id)
 
     await post.delete()

@@ -13,6 +13,15 @@ class CommentController {
      posts: comments.toJSON()
    })
   }
+  async index2({ view }) {
+
+    const comments = await Post.all();
+
+
+    return view.render(('layouts/main'), {
+     posts: comments.toJSON()
+   })
+  }
   async store({ request, response, session }) {
     // Validate input
     // const validation = await validate(request.all(), {
@@ -29,14 +38,45 @@ class CommentController {
 
     post.User_ID = request.input('User_ID')
     post.Post_ID = request.input('Post_ID')
-    post.Username = request.input('Username')
     post.Comment = request.input('Comment')
+    post.upvotes = 0
+    post.downvotes = 0
 
     await post.save()
 
     session.flash({ notification: 'Post Added!' })
 
-    return response.redirect('/database')
+    return response.redirect('/comms')
+  }
+
+  async destroy({params, session, response}){
+    // const postId = request.param('id')
+    const post = await Post.find(params.id)
+
+    await post.delete()
+
+    session.flash({ notification: 'Post Deleted!'})
+
+    return response.redirect('/')
+  }
+  async upvote({params, session, response}){
+    // const postId = request.param('id')
+    const post = await Post.find(params.id)
+
+    post.upvotes +=1
+    await post.save()
+
+    return response.redirect('/')
+  }
+
+  async downvote({params, session, response}){
+    // const postId = request.param('id')
+    const post = await Post.find(params.id);
+    post.downvotes +=1;
+
+    await post.save();
+
+    return response.redirect('/');
   }
 }
 
