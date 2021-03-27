@@ -1,0 +1,7 @@
+language: javascript
+rvm:
+15.8.0
+version ~> 1.0
+os: osx
+services:
+  -docker
