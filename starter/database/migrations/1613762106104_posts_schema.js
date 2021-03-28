@@ -13,6 +13,8 @@ class PostsSchema extends Schema {
       table.string("Post_ID")
       table.integer("upvotes")
       table.integer("downvotes")
+      table.integer("popular")
+      table.integer("parent")
       table.timestamps()
     })
   }

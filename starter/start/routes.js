@@ -20,10 +20,12 @@ const Route = use('Route')
 Route.on('/user-docs').render('user')
 Route.on('/dev-docs').render('dev')
 Route.get('/comms', 'CommentController.index')
-Route.get('/', 'CommentController.index2')
+Route.get('/', 'CommentController.index')
 Route.get('/delete/:id', 'CommentController.destroy');
 Route.get('/upvote/:id', 'CommentController.upvote');
 Route.get('/downvote/:id', 'CommentController.downvote');
-Route.post('/add', 'CommentController.store')
+Route.get('/showpost/:postID', 'CommentController.frompost');
+Route.post('/showpost2', 'CommentController.frompost2')
+Route.post('/add', 'CommentController.store');
 // Route.on('/database').render('database')
-Route.on('/edit').render('layouts/edit')
+Route.on('/edit').render('layouts/edit');
