@@ -24,8 +24,13 @@ Route.get('/', 'CommentController.index')
 Route.get('/delete/:id', 'CommentController.destroy');
 Route.get('/upvote/:id', 'CommentController.upvote');
 Route.get('/downvote/:id', 'CommentController.downvote');
+
 Route.get('/showpost/:postID', 'CommentController.frompost');
 Route.post('/showpost2', 'CommentController.frompost2')
+Route.post('/showpost3', 'CommentController.frompost3')
 Route.post('/add', 'CommentController.store');
+
+Route.get('getposts/:id', 'CommentController.get_posts')
+
 // Route.on('/database').render('database')
 Route.on('/edit').render('layouts/edit');

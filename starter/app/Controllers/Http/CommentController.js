@@ -60,7 +60,7 @@ class CommentController {
    .orderBy(order, chron)
    .fetch()
 
-   console.log(typeof post_comments)
+
 
 
 
@@ -69,6 +69,29 @@ class CommentController {
     posts: comments.toJSON(),
     from_post: post_comments.toJSON()
   })
+}
+
+async frompost3({ view, request, response, session }) {
+
+  const comments = await Post.all();
+  var post_comments = await Post
+  .query()
+  .where('Post_ID', '=', request.input('postID'))
+  .orderBy('parent')
+  .fetch()
+
+
+
+  var com =  post_comments.toString()
+
+  console.log(com)
+
+
+  return view.render(('layouts/main'), {
+   title: 'frompost3 title',
+   posts: comments.toJSON(),
+   structured: post_comments.toJSON()
+ })
 }
 
 
@@ -134,6 +157,35 @@ class CommentController {
 
     return response.redirect('/');
   }
+  async get_posts({ params }) {
+    // const sort = request.input('sort')
+    // var order = 'id'
+    // var chron = 'asc'
+    // var desc = 'Requested Comments with '
+    // if (sort == 1){
+    //   order = 'popular'
+    //   chron = 'desc'
+    //   desc += 'Most Popular First'
+    // } else if (sort == 2) {
+    //   order = 'popular'
+    //   desc += 'Most Dislike First'
+    // } else if (sort == 3) {
+    //   order = 'created_at'
+    //   chron = 'desc'
+    //   desc += 'Most Recent First'
+    // } else if (sort == 4) {
+    //   order = 'created_at'
+    //   desc += 'Oldest First'
+    // }
+
+    var post_comments = await Post
+    .query()
+    .where('Post_ID', '=', params.id)
+    // .orderBy(order, chron)
+    .fetch()
+
+    return post_comments.toJSON()
+ }
 }
 
 module.exports = CommentController

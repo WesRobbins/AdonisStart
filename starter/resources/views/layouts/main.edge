@@ -88,7 +88,51 @@
 										<li><b>Delete Comment:</b> http://esof423.cs.montana.edu:4013/delete</li>
 									  </ul>
 
+
 									</p>
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th scope="col">Function</th>
+												<th scope="col">HTTP Type</th>
+												<th scope="col">URL</th>
+												<th scope="col">Descrition</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Get Comments by Post</td>
+												<td>GET</td>
+												<td>http://esof423.cs.montana.edu:4013/getposts/:id</td>
+												<td>return all comments in JSON from specified post id</td>
+											</tr>
+											<tr>
+												<td>Upvote</td>
+												<td>GET</td>
+												<td>http://esof423.cs.montana.edu:4013/upvote/:id</td>
+												<td>increments upvote count of specified post and return home page</td>
+											</tr>
+											<tr>
+												<td>Downvote</td>
+												<td>GET</td>
+												<td>http://esof423.cs.montana.edu:4013/downvote/:id</td>
+												<td>increments downvote count of specified post and return home page</td>
+											</tr>
+											<tr>
+												<td>Add Comment</td>
+												<td>POST</td>
+												<td>http://esof423.cs.montana.edu:4013/add</td>
+												<td>Adds comment to database and returns home page. Required fields are Comment, User_id, and Post_ID</td>
+											</tr>
+											<tr>
+												<td>Delete</td>
+												<td>GET</td>
+												<td>http://esof423.cs.montana.edu:4013/delete/:id</td>
+												<td>Deletes Post based on required id and returns home page</td>
+											</tr>
+										</tbody>
+									</table>
 								  </body>
 							</section>
 
@@ -183,7 +227,7 @@
 									</form>
 									<h1>All Comments in Database</h1>
 
-									<table class="table table-striped table-dark">
+									<table class="table">
 									  <thead>
 									    <tr>
 									      <th scope="col">Date</th>
@@ -249,6 +293,48 @@
 										</thead>
 										<tbody>
 											@each(com in from_post)
+											<tr>
+												<!-- <th scope="row"></th> -->
+												<td>{{ com.updated_at }}</td>
+												<td>{{ com.id }}</td>
+												<td>{{ com.Post_ID }}</td>
+												<td>{{ com.Comment }}</td>
+												<td>{{ com.upvotes - com.downvotes }}</td>
+												<!-- <td><button class="btn btn-primary" type="button">Delete</button> -->
+												<!-- <td><button onclick="{{ route('CommentController.destroy', { id: com.Post_ID }) }}">Delete</button> -->
+												<td><a href="/delete/{{ com.id }}" class="btn btn-primary">Delete</a></td>
+													<!-- <form action="{{ route('CommentController.destroy', { id: com.Post_ID }) }}" method="POST"></td> -->
+												<td><button class="btn btn-primary" type="button">Edit</button>
+
+												<td><a href="{{ route('CommentController.upvote', { id: com.id }) }}" class="btn btn-primary">Upvote</a></td>
+												<td><a href="{{ route('CommentController.downvote', { id: com.id }) }}" class="btn btn-primary">Downvote</a></td>
+											</tr>
+											@endeach
+
+										</tbody>
+									</table>
+									<h1>Structured Comments From Post</h1>
+									<form action="{{ route('CommentController.frompost3') }}" method="POST">
+										{{ csrfField() }}
+										<div class="form-group">
+										<label>Enter identifier</label>
+										<input type="text" name="postID" display ="inline" class="form-control" placeholder="Post ID" value="{{ old('title', '') }}">
+										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+										</div>
+										<button class="btn btn-primary" type="submit">Get Comms</button>
+									</form>
+									<table class="table table-striped table-dark">
+										<thead>
+											<tr>
+												<th scope="col">Date</th>
+												<th scope="col">Comment ID</th>
+												<th scope="col">Post ID</th>
+												<th scope="col">Comment</th>
+												<th scope="col">Votes</th>
+											</tr>
+										</thead>
+										<tbody>
+											@each(com in structured)
 											<tr>
 												<!-- <th scope="row"></th> -->
 												<td>{{ com.updated_at }}</td>
