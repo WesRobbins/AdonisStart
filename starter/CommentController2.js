@@ -57,7 +57,7 @@ class PostController {
     return response.redirect('/posts')
   }
 
-  async edit({ paras, view }){
+  async edit({ params, view }){
     const post = await Post.find('params.id')
 
     return view.render('posts.edit', {

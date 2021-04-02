@@ -137,6 +137,22 @@ async frompost3({ view, request, response, session }) {
 
     return response.redirect('/')
   }
+
+  async edit({ params, view }){
+    const post = await Post.find(params.id)
+
+    return view.render('layouts/edit', {
+      post: post
+    })
+
+  }
+
+  async update({ request, response }){
+    const post = await Post.find(request.input('data'))
+    post.Comment = request.input('Comment')
+    await post.save()
+    return response.redirect('/')
+  }
   async upvote({params, session, response}){
     // const postId = request.param('id')
     const post = await Post.find(params.id)

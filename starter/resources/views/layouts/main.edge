@@ -90,7 +90,7 @@
 
 
 									</p>
-									<table class="table table-striped">
+									<!-- <table class="table table-striped">
 										<thead>
 											<tr>
 												<th scope="col">Function</th>
@@ -134,7 +134,7 @@
 										</tbody>
 									</table>
 								  </body>
-							</section>
+							</section> -->
 
 						<!-- Second Section -->
 							<section id="second" class="main special">
@@ -249,9 +249,8 @@
 												<!-- <td><button class="btn btn-primary" type="button">Delete</button> -->
 												<!-- <td><button onclick="{{ route('CommentController.destroy', { id: com.Post_ID }) }}">Delete</button> -->
 												<td><a href="/delete/{{ com.id }}" class="btn btn-primary">Delete</a></td>
-													<!-- <form action="{{ route('CommentController.destroy', { id: com.Post_ID }) }}" method="POST"></td> -->
-												<td><button class="btn btn-primary" type="button">Edit</button>
 
+												<td><a href="{{ route('CommentController.edit', { id: com.id }) }}" class="btn btn-primary">Edit</a></td>
 												<td><a href="{{ route('CommentController.upvote', { id: com.id }) }}" class="btn btn-primary">Upvote</a></td>
 												<td><a href="{{ route('CommentController.downvote', { id: com.id }) }}" class="btn btn-primary">Downvote</a></td>
 									    </tr>
