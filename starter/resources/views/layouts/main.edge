@@ -45,13 +45,13 @@
 										<h2>Comment API</h2>
 									</header>
 									<p>
-										For our Software Engineering Senior Capstone our class was approached 
-										by a local Bozeman startup, SpecialProject. In their own words SpecailProject 
-										offers a platform that is, “helping video creators and independent studios earn 
-										subscription revenue and reach audiences worldwide.” We were asked to build a 
-										commenting API. The API allows the user to access functions such as comment, 
-										upvote, downvote, and reply to a comment on a SpecialProject post. The API 
-										populates a live database hosted by the school server which is then accessed 
+										For our Software Engineering Senior Capstone our class was approached
+										by a local Bozeman startup, SpecialProject. In their own words SpecailProject
+										offers a platform that is, “helping video creators and independent studios earn
+										subscription revenue and reach audiences worldwide.” We were asked to build a
+										commenting API. The API allows the user to access functions such as comment,
+										upvote, downvote, and reply to a comment on a SpecialProject post. The API
+										populates a live database hosted by the school server which is then accessed
 										by the SpecialProject team and implemented into their interface.
 
 									</p>
@@ -91,9 +91,25 @@
 									  <br>
 									  <ul>
 										<li><b>Add Comment:</b> http://esof423.cs.montana.edu:4013/add</li>
+											<p style="margin-left: 40px"> By using the above link the user will be able to
+													successfully add a comment to the database, with the option to edit
+													their post. Once the post has been added, users will be able to
+													checkout comments by adding /edit/post id number to the existing URL through
+													which is accessed by a post request</p>
 										<li><b>Upvote:</b> http://esof423.cs.montana.edu:4013/upvote</li>
+											<p style="margin-left: 40px">The comment rating can be increased by using the above URL
+				                  by including the post id number in the form /post id. Once the
+				                  link has been entered and run, the comments rating will then be updated
+				                  through a get request and be visible with the comment.</p>
 										<li><b>Downvote:</b> http://esof423.cs.montana.edu:4013/downvote</li>
+											<p style="margin-left: 40px">The comment rating can be reduced by using the above URL
+				                  by including the post id number in the form /post id. Once the
+				                  link has been entered and run, the comments rating will then be updated
+				                  through a get request and be visible with the comment.</p>
 										<li><b>Delete Comment:</b> http://esof423.cs.montana.edu:4013/delete</li>
+											<p style="margin-left: 40px">Deleting the comment will work similar to the voting system
+				              through get requests when using the URL above with the /post id extension
+				              added. </p>
 									  </ul>
 
 
@@ -160,7 +176,51 @@
 											<li> ../app/Controllers/CommentController.js:
 													The comment controller file contains all of the
 													the implementation of the functions required within the API</li>
-													<br>
+
+													<p style="margin-left: 40px"> The 'index' function within this file is
+						              being utilized in order to display the comments from the database</p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> 'store' works as the function to actually update
+						              the databased once a user has submitted a comment. </p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> 'frompost' returns all of the comments that have
+						              been posted, displaying them on the website</p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> 'frompost2' in the sorting structure in order to
+						              search for comments based upon their ranking by either low to high or high to low, then by
+						              the time the comment was posted in either chronological, or reversed chronological order</p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> 'destroy' is the delete function for the API, and updates the
+						              database by removing the comment and the post id associated with it. </p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> The 'edit' and 'update' functions work as a way
+						                to be brought to the edit page to make any desired changes to your comment,
+						                and then the update function is what allows the database to be updated. The
+						                'update' function works the same for when users add new comments</p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> The two functions 'upvote' and 'downvote' are
+						                utilized to update the rank of the comment. Each new comment that's added
+						                starts with a score of 0, but once posted other user's will be able update
+						                the ranking. </p>
+
+						              <br>
+
+						              <p style="margin-left: 40px"> 'get_posts' is what accesses the database in
+						                the 'index' function to operate. </p>
+
+						              <br>
 											<li> ../database/1613762106104_posts_schema.js:
 													Contains the structure of the DB with each of the
 													required fields for the user to successfully posts
