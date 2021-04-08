@@ -16,9 +16,25 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('layouts/main1')
+// Route.on('/').render('layouts/main')
 Route.on('/user-docs').render('user')
 Route.on('/dev-docs').render('dev')
-Route.get('/database', 'CommentController.index')
-Route.post('/add', 'CommentController.store')
+Route.get('/comms', 'CommentController.index')
+Route.get('/', 'CommentController.index')
+Route.get('/delete/:id', 'CommentController.destroy');
+Route.get('/upvote/:id', 'CommentController.upvote');
+Route.get('/downvote/:id', 'CommentController.downvote');
+
+Route.get('/edit/:id', 'CommentController.edit')
+
+Route.get('/showpost/:postID', 'CommentController.frompost');
+Route.post('/showpost2', 'CommentController.frompost2')
+Route.post('/showpost3', 'CommentController.frompost3')
+Route.post('/add', 'CommentController.store');  
+
+Route.post('/update', 'CommentController.update')
+
+Route.get('getposts/:id', 'CommentController.get_posts')
+
 // Route.on('/database').render('database')
+Route.on('/edit').render('layouts/edit');
