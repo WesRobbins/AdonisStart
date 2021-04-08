@@ -18,6 +18,10 @@ Comment API
      allowing for infinite nesting of comments built with the Adonis framework. Below is a
      list of the files developed/edited specificially for this project and what make it unique.
      Remaining files can be assumed to be unedited, and apart of the Adonis framework.
+
+     <br>
+     Once a request has been made (Adding a comment, Up/Downvote, update a comment)
+     there will be a JSON file returned with all of the above data on the comment.
      </p>
 
      <br>
@@ -31,15 +35,51 @@ Comment API
               The comment controller file contains all of the
               the implementation of the functions required within the API</li>
 
-              <p style="margin-left: 40px"> The index function within this file is
+              <p style="margin-left: 40px"> The 'index' function within this file is
               being utilized in order to display the comments from the database</p>
 
               <br>
 
-              <p style="margin-left: 40px"> Store works as the function to actually update
+              <p style="margin-left: 40px"> 'store' works as the function to actually update
               the databased once a user has submitted a comment. </p>
 
               <br>
+
+              <p style="margin-left: 40px"> 'frompost' returns all of the comments that have
+              been posted, displaying them on the website</p>
+
+              <br>
+
+              <p style="margin-left: 40px"> 'frompost2' in the sorting structure in order to
+              search for comments based upon their ranking by either low to high or high to low, then by
+              the time the comment was posted in either chronological, or reversed chronological order</p>
+
+              <br>
+
+              <p style="margin-left: 40px"> 'destroy' is the delete function for the API, and updates the
+              database by removing the comment and the post id associated with it. </p>
+
+              <br>
+
+              <p style="margin-left: 40px"> The 'edit' and 'update' functions work as a way
+                to be brought to the edit page to make any desired changes to your comment,
+                and then the update function is what allows the database to be updated. The
+                'update' function works the same for when users add new comments</p>
+
+              <br>
+
+              <p style="margin-left: 40px"> The two functions 'upvote' and 'downvote' are
+                utilized to update the rank of the comment. Each new comment that's added
+                starts with a score of 0, but once posted other user's will be able update
+                the ranking. </p>
+
+              <br>
+
+              <p style="margin-left: 40px"> 'get_posts' is what accesses the database in
+                the 'index' function to operate. </p>
+
+              <br>
+
        <li> .. /database/1613762106104_posts_schema.js:
                Contains the structure of the DB with each of the
                required fields for the user to successfully posts
