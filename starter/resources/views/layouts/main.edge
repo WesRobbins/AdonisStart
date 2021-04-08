@@ -21,7 +21,7 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="logo.svg" alt="" /></span>
 						<h1>Comment API</h1>
-						<p>Johnny Egan, Wes Robbins, and Spencer Reap<br /></p>
+						<p>Johnny Egan | Wes Robbins | Spencer Reap<br /></p>
 					</header>
 
 				<!-- Nav -->
@@ -45,7 +45,15 @@
 										<h2>Comment API</h2>
 									</header>
 									<p>
-										Summary of API
+										For our Software Engineering Senior Capstone our class was approached 
+										by a local Bozeman startup, SpecialProject. In their own words SpecailProject 
+										offers a platform that is, “helping video creators and independent studios earn 
+										subscription revenue and reach audiences worldwide.” We were asked to build a 
+										commenting API. The API allows the user to access functions such as comment, 
+										upvote, downvote, and reply to a comment on a SpecialProject post. The API 
+										populates a live database hosted by the school server which is then accessed 
+										by the SpecialProject team and implemented into their interface.
+
 									</p>
 								</div>
 							</div>
@@ -277,7 +285,7 @@
 										<input type="text" name="postID" display ="inline" class="form-control" placeholder="Post ID" value="{{ old('title', '') }}">
 										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
 										</div>
-										<button class="btn btn-primary" type="submit">Get Comms</button>
+										<button class="btn btn-primary" type="submit">Get Comments</button>
 									</form>
 									<h2>{{ title }}</h2>
 									<table class="table table-striped table-dark">
@@ -320,7 +328,7 @@
 										<input type="text" name="postID" display ="inline" class="form-control" placeholder="Post ID" value="{{ old('title', '') }}">
 										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
 										</div>
-										<button class="btn btn-primary" type="submit">Get Comms</button>
+										<button class="btn btn-primary" type="submit">Get Comments</button>
 									</form>
 									<table class="table table-striped table-dark">
 										<thead>
