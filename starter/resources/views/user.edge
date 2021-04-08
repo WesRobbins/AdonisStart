@@ -6,11 +6,7 @@ Comment API
 
 @section('content')
 
-<style type="text/css">
-<!--
- .tab { margin-left: 40px; }
--->
-</style>
+
 
   <h1>User Documentation</h1>
 
@@ -41,23 +37,24 @@ Comment API
       <br>
       <ul>
         <li><b>Add Comment:</b> http://esof423.cs.montana.edu:4013/add</li>
-              <p class="tab"> By using the above link the user will be able to
+
+              <p style="margin-left: 40px"> By using the above link the user will be able to
                   successfully add a comment to the database, with the option to edit
                   their post. Once the post has been added, users will be able to
                   checkout comments by adding /edit/post id number to the existing URL through
                   which is accessed by a post request</p>
         <li><b>Upvote:</b> http://esof423.cs.montana.edu:4013/upvote</li>
-              <p class="tab">The comment rating can be increased by using the above URL
+              <p style="margin-left: 40px">The comment rating can be increased by using the above URL
                   by including the post id number in the form /post id. Once the
                   link has been entered and run, the comments rating will then be updated
                   through a get request and be visible with the comment.</p>
         <li><b>Downvote:</b> http://esof423.cs.montana.edu:4013/downvote</li>
-              <p class="tab">The comment rating can be reduced by using the above URL
+              <p style="margin-left: 40px">The comment rating can be reduced by using the above URL
                   by including the post id number in the form /post id. Once the
                   link has been entered and run, the comments rating will then be updated
                   through a get request and be visible with the comment.</p>
         <li><b>Delete Comment:</b> http://esof423.cs.montana.edu:4013/delete</li>
-              <p class="tab">Deleting the comment will work similar to the voting system
+              <p style="margin-left: 40px">Deleting the comment will work similar to the voting system
               through get requests when using the URL above with the /post id extension
               added. </p>
       </ul>
