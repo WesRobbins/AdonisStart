@@ -5,38 +5,61 @@ Comment API
 @endsection
 
 @section('content')
+
+<style type="text/css">
+<!--
+ .tab { margin-left: 40px; }
+-->
+</style>
+
   <h1>User Documentation</h1>
 
   <h2>SpecialProject.io Commenting API (v1.0 beta) </h2>
   <body>
     <br>
     <p> <b>Summary:</b>The goal of the API is a commenting interface for SpecialProjects's site where their
-      users can comment, reply, like, etc. content on there site. The commenting API will use 
+      users can comment, reply, like, etc. content on there site. The commenting API will use
       SpecialProject's UUIDs' (universally unique identifier) to identify the users and their
-      required information. The API should work similarly to the reddit commenting interface 
+      required information. The API should work similarly to the reddit commenting interface
       with nested comment replys.
     </p>
     <br>
     <p>
-      The data such as the comments and the users linked to them will be stored on a live database 
-      provided by MSU. MSU will also host the live API URL. 
+      The data such as the comments and the users linked to them will be stored on a live database
+      provided by MSU. MSU will also host the live API URL.
       <br>
       <br>
       <b>Main page URL:</b> http://esof423.cs.montana.edu:4013
-    <p> 
+    <p>
       <br>
       Postman will be used as the API devlepement tool for reqeusts
       to and and from the API to the SpecialProject site.
-      <br> 
+      <br>
       <br>
 
       <b>SpecialProject will use the provdided URL's to call different functions:</b>
       <br>
       <ul>
         <li><b>Add Comment:</b> http://esof423.cs.montana.edu:4013/add</li>
+              <p class="tab"> By using the above link the user will be able to
+                  successfully add a comment to the database, with the option to edit
+                  their post. Once the post has been added, users will be able to
+                  checkout comments by adding /edit/post id number to the existing URL through
+                  which is accessed by a post request</p>
         <li><b>Upvote:</b> http://esof423.cs.montana.edu:4013/upvote</li>
+              <p class="tab">The comment rating can be increased by using the above URL
+                  by including the post id number in the form /post id. Once the
+                  link has been entered and run, the comments rating will then be updated
+                  through a get request and be visible with the comment.</p>
         <li><b>Downvote:</b> http://esof423.cs.montana.edu:4013/downvote</li>
+              <p class="tab">The comment rating can be reduced by using the above URL
+                  by including the post id number in the form /post id. Once the
+                  link has been entered and run, the comments rating will then be updated
+                  through a get request and be visible with the comment.</p>
         <li><b>Delete Comment:</b> http://esof423.cs.montana.edu:4013/delete</li>
+              <p class="tab">Deleting the comment will work similar to the voting system
+              through get requests when using the URL above with the /post id extension
+              added. </p>
       </ul>
 
     </p>
