@@ -35,6 +35,12 @@ header a {
   padding: 1.5em 0 0 2em;
   margin: 0;
 }
+
+pre {
+  text-align: left;
+  white-space: pre-line;
+}
+
 nav {
   justify-self: right;
 }
