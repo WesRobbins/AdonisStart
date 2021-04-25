@@ -207,7 +207,7 @@
 
 									<h2>Add Comment</h2>
 									<form action="{{ route('CommentController.store') }}" method="POST">
-										{{ csrfField() }}
+										<!-- {{ csrfField() }} -->
 										<div class="form-group">
 										<label>User ID</label>
 										<input type="text" name="User_ID" class="form-control" placeholder="User ID" value="{{ old('title', '') }}">
@@ -312,48 +312,7 @@
 
 										</tbody>
 									</table>
-									<h1>Structured Comments From Post</h1>
-									<form action="{{ route('CommentController.frompost3') }}" method="POST">
-										{{ csrfField() }}
-										<div class="form-group">
-										<label>Enter identifier</label>
-										<input type="text" name="postID" display ="inline" class="form-control" placeholder="Post ID" value="{{ old('title', '') }}">
-										{{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
-										</div>
-										<button class="btn btn-primary" type="submit">Get Comms</button>
-									</form>
-									<table class="table table-striped table-dark">
-										<thead>
-											<tr>
-												<th scope="col">Date</th>
-												<th scope="col">Comment ID</th>
-												<th scope="col">Post ID</th>
-												<th scope="col">Comment</th>
-												<th scope="col">Votes</th>
-											</tr>
-										</thead>
-										<tbody>
-											@each(com in structured)
-											<tr>
-												<!-- <th scope="row"></th> -->
-												<td>{{ com.updated_at }}</td>
-												<td>{{ com.id }}</td>
-												<td>{{ com.Post_ID }}</td>
-												<td>{{ com.Comment }}</td>
-												<td>{{ com.upvotes - com.downvotes }}</td>
-												<!-- <td><button class="btn btn-primary" type="button">Delete</button> -->
-												<!-- <td><button onclick="{{ route('CommentController.destroy', { id: com.Post_ID }) }}">Delete</button> -->
-												<td><a href="/delete/{{ com.id }}" class="btn btn-primary">Delete</a></td>
-													<!-- <form action="{{ route('CommentController.destroy', { id: com.Post_ID }) }}" method="POST"></td> -->
-												<td><button class="btn btn-primary" type="button">Edit</button>
-
-												<td><a href="{{ route('CommentController.upvote', { id: com.id }) }}" class="btn btn-primary">Upvote</a></td>
-												<td><a href="{{ route('CommentController.downvote', { id: com.id }) }}" class="btn btn-primary">Downvote</a></td>
-											</tr>
-											@endeach
-
-										</tbody>
-									</table>
+									
 
 
 							</section>

@@ -1,40 +1,40 @@
-@layout('layouts.main')
+<!DOCTYPE HTML>
 
-@section('title')
-Comment API
-@endsection
+<html>
+	<head>
+		<title>SpecailProject.io Comment API</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
 
-@section('content')
-  <h1>Add Comment</h1>
-  <form action="/add" method="POST">
-    {{ csrfField() }}
-    <div class="form-group">
-      <label>User ID</label>
-      <input type="text" name="User_ID" class="form-control" placeholder="User ID" value="{{ old('title', '') }}">
-      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
-    </div>
-    <div class="form-group">
-      <label>Post ID</label>
-      <input type="text" name="Post_ID" class="form-control" placeholder="Post ID" value="{{ old('title', '') }}">
-      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
-    </div>
-    <div class="form-group">
-      <label>User Name</label>
-      <input type="text" name="Username" class="form-control" placeholder="Username" value="{{ old('title', '') }}">
-      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
-    </div>
-    <div class="form-group">
-      <label>Comment Body</label>
-      <textarea name="Comment" class="form-control" placeholder="Comment">{{ old('body', '') }}</textarea>
-      {{ elIf('<span class="text-danger">$self</span>', getErrorFor('body'), hasErrorFor('body')) }}
-    </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
-  </form>
-  <h1>Comments in Database</h1>
-  <ul class='list-group'>
-    @each(com in posts)
-      <li class='list-group-item'>User ID: {{ com.User_ID }} <tab> Comment: {{ com.Comment }}</li>
-    @endeach
-  </ul>
+	<body>
+		<table class="table table-striped table-dark">
+			<thead>
+				<tr>
+					<th scope="col">Date</th>
+					<th scope="col">Comment ID</th>
+					<th scope="col">Post ID</th>
+					<th scope="col">Comment</th>
+					<th scope="col">Votes</th>
+				</tr>
+			</thead>
+			<tbody>
+				@each(com in posts)
+				<tr>
+					<!-- <th scope="row"></th> -->
+					<td>{{ com.updated_at }}</td>
+					<td>{{ com.id }}</td>
+					<td>{{ com.Post_ID }}</td>
+					<td>{{ com.Comment }}</td>
+					<td>{{ com.upvotes - com.downvotes }}</td>
 
-@endsection
+				</tr>
+				@endeach
+
+			</tbody>
+		</table>
+	</body>
+
+</html>

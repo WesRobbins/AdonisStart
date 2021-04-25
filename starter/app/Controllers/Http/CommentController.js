@@ -14,6 +14,15 @@ class CommentController {
      posts: comments.toJSON()
    })
   }
+  async index_database({ view }) {
+
+    const comments = await Post.all();
+
+
+    return view.render(('database'), {
+     posts: comments.toJSON()
+   })
+  }
 
   async frompost({ view, params }) {
 
@@ -202,6 +211,80 @@ async frompost3({ view, request, response, session }) {
 
     return post_comments.toJSON()
  }
+
+ async send_upvote({ params }) {
+   const post = await Post.find(params.id)
+
+   post.upvotes +=1
+   post.popular +=1
+   await post.save()
+
+   return 'Upvote succeeded for comment id ' +params.id + '. Comment now has ' + post.popular + ' votes'
+ }
+
+ async send_downvote({ params }) {
+   const post = await Post.find(params.id)
+
+   post.downvotes +=1
+   post.popular -=1
+   await post.save()
+
+   return 'Downvote succeeded for comment id ' +params.id + '. Comment now has ' + post.popular + ' votes'
+ }
+
+ async send_comment({ request, response }) {
+   // Validate input
+   // const validation = await validate(request.all(), {
+   //   Comment: 'required|min:3|max:255',
+   //   Post_ID: 'required|min:1|max:20',
+   //   User_ID: 'required|min:1|max:20'
+   //
+   // })
+   //
+   // if(validation.fails()){
+   //   session.withErrors(validation.messages()).flashAll()
+   //   return response.redirect('back')
+   // }
+   console.log('in send_comment')
+   const post = new Post()
+
+   post.User_ID = request.input('User_ID')
+   post.Post_ID = request.input('Post_ID')
+   post.Comment = request.input('Comment')
+   post.parent = 0
+   post.upvotes = 0
+   post.downvotes = 0
+   post.popular = 0
+
+
+   await post.save()
+
+
+   return 'Comment Successfully Added'
+ }
+
+ async send_update({ request, response }){
+   const post = await Post.find(request.input('data'))
+   post.Comment = request.input('Comment')
+   await post.save()
+   return 'Comment Edited Successfully'
+ }
+
+ async send_delete({ params }){
+   // const postId = request.param('id')
+   const post = await Post.find(params.id)
+
+
+   if (post) {
+     await post.delete()
+     return '1: Comment Delted Succesfully'
+   } else {
+     return '0: The Comment you are trying to delete does not exist'
+   }
+ }
 }
+
+
+
 
 module.exports = CommentController
